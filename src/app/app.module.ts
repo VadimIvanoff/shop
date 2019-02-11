@@ -8,19 +8,37 @@ import {MaterialModule} from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TestComponent } from './test/test.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
+import { FooterComponent } from './footer/footer.component';
+import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainFrameComponent,
     PageNotFoundComponent,
-    TestComponent
+    TestComponent,
+    ProductCardComponent,
+    CatalogComponent,
+    CategoriesMenuComponent,
+    FooterComponent,
+    TopToolbarComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]

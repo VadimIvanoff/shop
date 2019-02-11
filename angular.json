@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "Shop"
+  "defaultProject": "Shop",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
