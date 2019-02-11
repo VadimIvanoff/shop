@@ -1,60 +1,9 @@
 <!--// Каталог товаров-->
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <mat-card class="mt-3">
-        Карточка акции
-        <ul>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-        </ul>
-      </mat-card>
+<app-sorting></app-sorting>
+    <div class="p-1 d-flex flex-wrap justify-content-center">
+      <app-product-card *ngFor="let prod of products$ | async" [product]="prod"></app-product-card>
     </div>
-    <div class="col-4">
-      <mat-card class="mt-3">
-        КарточкаТовар дня
-        <ul>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-          <li>1</li>
-        </ul>
-      </mat-card>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-12 mb-2"><h4>Рекомендуем Вам</h4></div>
 
-    <div class="col-3"><mat-card>
-      Карточка товара
-    </mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-12 mb-2"><h4>Выбор покупателей</h4></div>
 
-    <div class="col-3"><mat-card></mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-    <div class="col-3"><mat-card></mat-card></div>
-  </div>
-  <mat-toolbar class="fixed-bottom" color="primary">
-    <mat-toolbar-row class="text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-4">Помощь покупателю</div>
-          <div class="col-4">Информация</div>
-          <div class="col-4">Компания</div>
-        </div>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</div>
+
+

@@ -1,3 +1,22 @@
-<p>
-  product-card works!
-</p>
+
+  <mat-card class="prod-card-size m-1">
+    <div class="text-center">
+      <img mat-card-image class="my-image-size" src="../../assets/images/products/phone/phone.jpg"  alt="Photo of product">
+    </div>
+
+    <mat-card-content>
+      {{product.description}}
+    </mat-card-content>
+    <mat-card-header>
+      <!--<mat-card-title>Наименование</mat-card-title>-->
+      <mat-card-subtitle>Rating - {{product.rating}}</mat-card-subtitle>
+    </mat-card-header>
+
+
+    <mat-card-actions class="d-flex">
+      <span class="mr-auto">{{product.price}}р.</span>
+      <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+
+

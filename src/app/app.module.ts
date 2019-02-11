@@ -18,6 +18,7 @@ import { CategoriesMenuComponent } from './categories-menu/categories-menu.compo
 import { FooterComponent } from './footer/footer.component';
 import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
 import { FiltersComponent } from './filters/filters.component';
+import { SortingComponent } from './sorting/sorting.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FiltersComponent } from './filters/filters.component';
     CategoriesMenuComponent,
     FooterComponent,
     TopToolbarComponent,
-    FiltersComponent
+    FiltersComponent,
+    SortingComponent
   ],
   imports: [
     BrowserModule,
