@@ -3,22 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainFrameComponent } from './main-frame/main-frame.component';
+import { MainFrameComponent } from './main-templates/main-frame/main-frame.component';
 import {MaterialModule} from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './main-templates/page-not-found/page-not-found.component';
 import { TestComponent } from './test/test.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductCardComponent } from './products/product-card/product-card.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
-import { FiltersComponent } from './filters/filters.component';
-import { SortingComponent } from './sorting/sorting.component';
+import { CategoriesMenuComponent } from './main-templates/categories-menu/categories-menu.component';
+import { FooterComponent } from './main-templates/footer/footer.component';
+import { TopToolbarComponent } from './main-templates/top-toolbar/top-toolbar.component';
+import { FiltersComponent } from './catalog/filters/filters.component';
+import { SortingComponent } from './catalog/sorting/sorting.component';
+import { LoginComponent } from './authentication/login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RegisterComponent } from './authentication/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,14 @@ import { SortingComponent } from './sorting/sorting.component';
     FooterComponent,
     TopToolbarComponent,
     FiltersComponent,
-    SortingComponent
+    SortingComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,

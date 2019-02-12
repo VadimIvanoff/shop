@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="register()" class="flex-container mt-5">
+  <img src="../../../assets/images/logo.jpg">
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" type="email">
+    <mat-error>Укажите email</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Password" formControlName="password" type="password">
+    <mat-error>Укажите пароль</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Confirm Password" formControlName="confirm" type="password">
+    <mat-error>Пароли не совпадают</mat-error>
+  </mat-form-field>
+  <div *ngIf="registerErrors" class="text-center">
+    <mat-error *ngFor="let err of registerErrors">{{err}}</mat-error>
+  </div>
+  <button class="my-3"  color="primary" mat-raised-button [disabled]="form.invalid">Register</button>
+  <button routerLink="/main/login" color="accent" mat-raised-button>Cancel</button>
+</form>

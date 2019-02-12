@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {GetProductInfoService} from '../services/get-product-info.service';
+import {GetProductInfoService} from '../../services/get-product-info.service';
 import {Observable} from 'rxjs';
-import {Category} from '../models/category';
+import {Category} from '../../models/category';
 import {map, take} from 'rxjs/operators';
 
 @Component({
