@@ -17,6 +17,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     this.products$ = this.getInfo.getProducts();
+    this.getInfo.makeProductsRequest();
   }
 
 }

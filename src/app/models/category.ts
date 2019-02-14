@@ -5,3 +5,6 @@ export interface Category {
   image?: any;
   icon: string;
 }
+export enum ProductCategories {
+   Телефоны, Компьютеры, Принтеры, Телевизоры, Фото, Гаджеты, Игры
+}

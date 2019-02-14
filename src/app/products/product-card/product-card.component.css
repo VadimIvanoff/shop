@@ -5,3 +5,6 @@
 .my-image-size {
   max-width: 80px;
 }
+.my-pointer {
+  cursor: pointer;
+}

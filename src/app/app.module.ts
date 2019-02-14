@@ -22,6 +22,7 @@ import { SortingComponent } from './catalog/sorting/sorting.component';
 import { LoginComponent } from './authentication/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './authentication/register/register.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RegisterComponent } from './authentication/register/register.component'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,

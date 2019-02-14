@@ -19,5 +19,8 @@ export class CategoriesMenuComponent implements OnInit {
      map(array => array.slice(0, 8))
     );
   }
-
+  getProducts(cat: string): void {
+    // console.log(cat);
+    this.getInfo.makeProductsRequest(cat);
+  }
 }

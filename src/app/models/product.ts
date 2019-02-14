@@ -4,5 +4,7 @@ export interface Product {
   description: string;
   rating: number;
   price: number;
-  photo?: any[];
+  hasImage?: boolean;
+  smallImage?: any;
+  bigImage?: any;
 }
