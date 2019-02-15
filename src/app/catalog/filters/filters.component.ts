@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SearchCriteria} from '../../models/searchCriteria';
+import {GetProductInfoService} from '../../services/get-product-info.service';
 
 @Component({
   selector: 'app-filters',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltersComponent implements OnInit {
 
-  constructor() { }
+  rating = [1, 2, 3, 4, 5];
+  fromPrice: string;
+  toPrice: string;
+  selectedRating: number;
+
+  constructor(private getInfo: GetProductInfoService) {
+  }
 
   ngOnInit() {
   }
 
+  selectPrice() {
+    if (this.fromPrice || this.toPrice) {
+      const request: SearchCriteria = {from: this.fromPrice ? parseInt(this.fromPrice, 10) : undefined,
+                                        to: this.toPrice ?  parseInt(this.toPrice, 10) : undefined, type: 'price'};
+      console.log(request)
+      this.getInfo.makeSearchRequest(request);
+    }
+
+    // console.log(`from - ${this.fromPrice} --- to - ${this.toPrice}`);
+  }
+
+  selectRating() {
+    if (this.selectedRating) {
+      // console.log(this.rating);
+      const request: SearchCriteria = {type: 'rating', rating: this.selectedRating};
+      this.getInfo.makeSearchRequest(request);
+    }
+  }
 }

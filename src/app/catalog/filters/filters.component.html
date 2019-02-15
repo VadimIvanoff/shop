@@ -1,45 +1,23 @@
 <div class="m-4">
-  <h6>Категория</h6>
-<mat-list>
-  <mat-list-item>
-    <mat-checkbox>Samsung</mat-checkbox>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-checkbox>Apple</mat-checkbox>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-checkbox>Honor</mat-checkbox>
-  </mat-list-item>
-  <mat-list-item>
-    <mat-checkbox>Meizu</mat-checkbox>
-  </mat-list-item>
-</mat-list>
-  <mat-divider></mat-divider>
-  <h6 class="mt-3">Рейтинг</h6>
-  <mat-list>
-    <mat-list-item>
-      <mat-checkbox>Samsung</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox>Apple</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox>Honor</mat-checkbox>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-checkbox>Meizu</mat-checkbox>
-    </mat-list-item>
-  </mat-list>
-</div>
-<mat-divider></mat-divider>
-<div class="m-2">
   <h6 class="mt-3">Цена</h6>
   <mat-form-field class="w-50">
-    <input  matInput placeholder="от">
+    <input matInput placeholder="от" [(ngModel)]="fromPrice">
   </mat-form-field>
   <mat-form-field class="w-50">
-    <input  matInput placeholder="до">
+    <input matInput placeholder="до"  [(ngModel)]="toPrice">
   </mat-form-field>
-  <button mat-raised-button class="w-100">Применить</button>
+  <button mat-raised-button class="w-100" (click)=" selectPrice()">Применить</button>
+
+  <mat-divider></mat-divider>
+
+  <h6 class="mt-3">Рейтинг не ниже</h6>
+  <mat-form-field>
+    <mat-select class="w-100" [(ngModel)]="selectedRating">
+      <mat-option *ngFor="let item of rating" [value]="item" >
+        {{item}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button class="w-100" (click)=" selectRating()">Применить</button>
 </div>
 

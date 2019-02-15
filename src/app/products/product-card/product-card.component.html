@@ -1,23 +1,23 @@
 
-  <mat-card class="prod-card-size m-1 my-pointer" (click)="productDetails()">
+  <mat-card class="prod-card-size m-1 my-pointer" (click)="openPrpductDetails()">
     <div class="text-center">
-      <img mat-card-image class="my-image-size" *ngIf="img$|async as img; else noImageFound" [src]="img"  alt="Photo of product">
+      <img mat-card-image  *ngIf="img$|async as img; else noImageFound" [src]="img"  alt="Photo of product">
     </div>
-
-    <mat-card-content>
-      {{product.description}}
-    </mat-card-content>
     <mat-card-header>
-      <!--<mat-card-title>Наименование</mat-card-title>-->
-      <!--<mat-card-subtitle>Rating - {{product.rating}}</mat-card-subtitle>-->
+      <mat-card-subtitle class="text-left">Рейтинг - {{product.rating}}</mat-card-subtitle>
     </mat-card-header>
-
+    <mat-card-content >
+      <h6>   {{product.name}}</h6>
+      <p class="align-items-stretch">
+        {{product.description.slice(0, 40)}}
+      </p>
+    </mat-card-content>
     <mat-card-actions class="d-flex">
       <span class="mr-auto">{{product.price}}р.</span>
-      <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
+
     </mat-card-actions>
   </mat-card>
 <ng-template #noImageFound>
-  <img src="../../../assets/images/products/100x100.png">
+  <img src="../../../assets/images/spinners/spinner-200.gif" width="100px" height="100px">
 </ng-template>
 

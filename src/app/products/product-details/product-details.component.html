@@ -1,0 +1,28 @@
+
+
+
+
+
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <img mat-card-image  *ngIf="img$|async as img; else noImageFound" [src]="img"  alt="Photo of product">
+      </div>
+      <div class="col-6">
+        <h1>{{product.name}}</h1>
+        <p>Рейтинг - {{product.rating}}</p>
+        <p>Описание - {{product.description}}</p>
+        <p>Цена - {{product.price}} р.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex">
+  <button mat-button class="mr-auto"   cdkFocusInitial (click)="addToCart()"> <mat-icon>add_shopping_cart</mat-icon></button>
+  <button mat-button (click)="close()">Закрыть</button>
+
+</div>
+  <ng-template #noImageFound>
+    <img src="../../../assets/images/spinners/spinner-200.gif" width="100px" height="100px">
+  </ng-template>

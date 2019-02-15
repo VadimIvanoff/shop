@@ -12,14 +12,16 @@ import {map, take} from 'rxjs/operators';
 export class CategoriesMenuComponent implements OnInit {
 
   categories$: Observable<Category[]>;
+  allCategories$: Observable<Category[]>;
   constructor(private getInfo: GetProductInfoService) { }
 
   ngOnInit() {
     this.categories$ = this.getInfo.getCategories().pipe(
-     map(array => array.slice(0, 8))
+     map(array => array.slice(0, 5))
     );
+    this.allCategories$ = this.getInfo.getCategories();
   }
-  getProducts(cat: string): void {
+  getProducts(cat?: string): void {
     // console.log(cat);
     this.getInfo.makeProductsRequest(cat);
   }

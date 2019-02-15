@@ -1,7 +1,11 @@
 <mat-toolbar >
   <mat-toolbar-row class="d-flex justify-content-around" *ngIf="categories$ | async">
+    <button mat-button [matMenuTriggerFor]="menu" (click)="getProducts()" routerLink="/catalog">Все категории</button>
+    <mat-menu  #menu="matMenu">
+      <button  mat-menu-item *ngFor="let cat of allCategories$ | async" (click)="getProducts(cat.name)">{{cat.name}}</button>
+    </mat-menu>
    <button mat-button *ngFor="let cat of categories$ | async" (click)="getProducts(cat.name)">
-     <mat-icon>{{cat.icon}}</mat-icon>{{cat.name}}
+     <mat-icon>{{cat.icon}}</mat-icon><span class="d-none d-lg-inline">{{cat.name}}</span>
    </button>
   </mat-toolbar-row>
 </mat-toolbar>

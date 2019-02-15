@@ -23,6 +23,9 @@ import { LoginComponent } from './authentication/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './authentication/register/register.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { NotificationComponent } from './main-templates/notification/notification.component';
+import { CartComponent } from './main-templates/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import {HttpClientModule} from '@angular/common/http';
     FiltersComponent,
     SortingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductDetailsComponent,
+    NotificationComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

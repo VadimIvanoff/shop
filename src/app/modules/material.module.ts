@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  MatBottomSheetModule,
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDividerModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
   MatToolbarModule
 } from '@angular/material';
+import {ProductDetailsComponent} from '../products/product-details/product-details.component';
+import {NotificationComponent} from '../main-templates/notification/notification.component';
 
 @NgModule({
   declarations: [],
@@ -22,7 +25,12 @@ import {
     MatButtonModule,
     MatListModule,
     MatCheckboxModule,
-    MatDividerModule
+    MatDividerModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatBottomSheetModule,
+    MatRadioModule
   ],
   exports: [
     MatToolbarModule,
@@ -33,7 +41,13 @@ import {
     MatButtonModule,
     MatListModule,
     MatCheckboxModule,
-    MatDividerModule
-  ]
+    MatDividerModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatBottomSheetModule,
+    MatRadioModule
+  ],
+  entryComponents: [ProductDetailsComponent, NotificationComponent]
 })
 export class MaterialModule { }

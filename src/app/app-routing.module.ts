@@ -6,15 +6,15 @@ import {TestComponent} from './test/test.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {RegisterComponent} from './authentication/register/register.component';
+import {CartService} from './services/cart.service';
+import {CartComponent} from './main-templates/cart/cart.component';
 
 const routes: Routes = [
   {
     path: '', component: MainFrameComponent, children: [
-      {path: '', component: TestComponent},
-      {path: 'test', component: TestComponent},
-      {path: 'catalog', component: CatalogComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+          {path: '', component: CatalogComponent},
+          {path: 'catalog', component: CatalogComponent},
+          {path: 'cart', component: CartComponent}
     ]
   },
   {path: '**', component: PageNotFoundComponent}

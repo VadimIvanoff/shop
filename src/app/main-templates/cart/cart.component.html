@@ -1,0 +1,48 @@
+
+
+      <table class="table table-hover table-active">
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Стоимость</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let prod of products">
+          <td >{{prod.name}}</td>
+          <td >{{prod.price}}</td>
+        </tr>
+        <tr>
+          <td class="d-flex">
+            <span class="ml-auto"> итого:</span>
+
+          </td>
+          <td>
+            <span >{{total}}</span>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex">
+        <h5 class="ml-auto">Итого - {{total}} р.</h5>
+      </div>
+      <div class="d-flex">
+        <mat-radio-group [(ngModel)]="favoriteSeason">
+          <mat-radio-button class="d-block">
+              Доставка
+        </mat-radio-button>
+          <mat-radio-button >
+            Самовывоз
+          </mat-radio-button>
+        </mat-radio-group>
+        <button  routerLink="/register" class="ml-auto" mat-raised-button  color="accent">Оформить заказ</button>
+      </div>
+
+
+
+
+
+
+

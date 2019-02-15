@@ -3,6 +3,8 @@ import {Product} from '../../models/product';
 import {GetProductInfoService} from '../../services/get-product-info.service';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
+import {MatDialog} from '@angular/material';
+import {ProductDetailsComponent} from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-product-card',
@@ -14,12 +16,19 @@ export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   private img$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
 
-  constructor(private getInfo: GetProductInfoService) { }
+  constructor(private getInfo: GetProductInfoService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getImage().subscribe(() => {
     });
+
   }
+  openPrpductDetails(): void {
+    const dialogRef = this.dialog.open(ProductDetailsComponent, {
+      data: this.product
+    });
+  }
+
   getImage(): Observable<any> {
     return this.getInfo.getSmallImage(this.product.id).pipe(
       tap(blob => this.createImageFromBlob(blob))
@@ -36,5 +45,4 @@ export class ProductCardComponent implements OnInit {
       reader.readAsDataURL(image);
     }
   }
-  productDetails(): void {}
 }
