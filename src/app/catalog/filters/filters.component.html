@@ -11,8 +11,8 @@
   <mat-divider></mat-divider>
 
   <h6 class="mt-3">Рейтинг не ниже</h6>
-  <mat-form-field>
-    <mat-select class="w-100" [(ngModel)]="selectedRating">
+  <mat-form-field class="w-100">
+    <mat-select  [(ngModel)]="selectedRating">
       <mat-option *ngFor="let item of rating" [value]="item" >
         {{item}}
       </mat-option>

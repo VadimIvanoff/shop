@@ -26,6 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { NotificationComponent } from './main-templates/notification/notification.component';
 import { CartComponent } from './main-templates/cart/cart.component';
+import { CheckoutComponent } from './main-templates/checkout/checkout.component';
+import { DeliveryFormComponent } from './main-templates/delivery-form/delivery-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { CartComponent } from './main-templates/cart/cart.component';
     RegisterComponent,
     ProductDetailsComponent,
     NotificationComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent,
+    DeliveryFormComponent
   ],
   imports: [
     BrowserModule,

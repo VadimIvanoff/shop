@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <app-register *ngIf="register"></app-register>
+      <app-login *ngIf="!register"></app-login>
+     <div class="mt-2">
+      <a class="my-pointer"  *ngIf="register"  (click)="register=false">Уже есть аккаунт</a>
+      <a class="my-pointer"  *ngIf="!register" (click)="register=true">Пройти регистрацию</a>
+    </div>
+    </div>
+    <div class="col-6">
+      <div *ngIf="(delivery|async)==='true'" class="col-12">
+        <app-delivery-form></app-delivery-form>
+      </div>
+    </div>
+  </div>
+</div>
+

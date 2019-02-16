@@ -1,14 +1,16 @@
 
+<h4>Воход в личный кабинет</h4>
 <form [formGroup]="form" (ngSubmit)="login()" class="flex-container mt-5">
   <mat-form-field>
-    <input matInput placeholder="Email" formControlName="email" type="email">
+    <input matInput placeholder="Адрес почты" formControlName="email" type="email">
     <mat-error>Укажите email</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Password" formControlName="password" type="password">
+    <input matInput placeholder="Пароль" formControlName="password" type="password">
     <mat-error>Укажите пароль</mat-error>
   </mat-form-field>
   <mat-error *ngIf="loginError">{{loginError}}</mat-error>
-  <button class="my-3" color="primary" mat-raised-button [disabled]="form.invalid">Login</button>
-  <button routerLink="/main/register" color="accent" mat-raised-button>Register</button>
+
+  <!--<button routerLink="/main/register" color="accent" mat-raised-button>Register</button>-->
 </form>
+<button class="my-3" color="primary" mat-raised-button [disabled]="form.invalid">Вход</button>
