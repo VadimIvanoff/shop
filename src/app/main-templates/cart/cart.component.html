@@ -1,5 +1,4 @@
 
-
       <table class="table table-hover table-active">
         <thead>
           <tr>
@@ -8,23 +7,20 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let prod of products">
+        <tr *ngFor="let prod of products" (click)="openPrpductDetails(prod, 'fromCart')">
           <td >{{prod.name}}</td>
           <td >{{prod.price}}</td>
         </tr>
         <tr>
           <td class="d-flex">
             <span class="ml-auto"> итого:</span>
-
           </td>
           <td>
             <span >{{total}}</span>
-
           </td>
         </tr>
         </tbody>
       </table>
-
       <div class="d-flex">
         <h5 class="ml-auto">Итого - {{total}} р.</h5>
       </div>
@@ -34,7 +30,7 @@
               Доставка
         </mat-radio-button>
         </mat-radio-group>
-        <button  [routerLink]="['/checkout', {delivery: delivery}]" class="ml-auto" mat-raised-button  color="accent">Оформить заказ</button>
+        <button  (click)="checkout()" class="ml-auto" mat-raised-button  color="accent">Оформить заказ</button>
       </div>
 
 

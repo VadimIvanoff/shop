@@ -6,16 +6,22 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {CartService} from '../../services/cart.service';
 
+
+export interface ProductInfo {
+  product: Product;
+  source: string;
+}
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent implements OnInit {
 
   private img$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
   constructor(public dialogRef: MatDialogRef<ProductDetailsComponent>,
-              @Inject(MAT_DIALOG_DATA) public product: Product,
+              @Inject(MAT_DIALOG_DATA) public data: ProductInfo,
               private getInfo: GetProductInfoService,
               private cart: CartService) { }
 
@@ -27,7 +33,8 @@ export class ProductDetailsComponent implements OnInit {
     this.dialogRef.close();
   }
   getImage(): Observable<any> {
-    return this.getInfo.getBigImage(this.product.id).pipe(
+    console.log(this.data.source);
+    return this.getInfo.getBigImage(this.data.product.id).pipe(
       tap(blob => this.createImageFromBlob(blob))
     );
   }
@@ -44,7 +51,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(): void {
-    this.cart.addProduct(this.product);
+    this.cart.addProduct(this.data.product);
+    this.close();
+  }
+
+  delFromCart() {
+    this.cart.removeProduct(this.data.product.id);
     this.close();
   }
 }

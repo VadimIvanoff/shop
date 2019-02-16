@@ -4,7 +4,7 @@ import {GetProductInfoService} from '../../services/get-product-info.service';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
-import {ProductDetailsComponent} from '../product-details/product-details.component';
+import {ProductDetailsComponent, ProductInfo} from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-product-card',
@@ -24,8 +24,9 @@ export class ProductCardComponent implements OnInit {
 
   }
   openPrpductDetails(): void {
+    const prodInfo: ProductInfo = {product: this.product, source: 'productCard'}
     const dialogRef = this.dialog.open(ProductDetailsComponent, {
-      data: this.product
+      data: prodInfo
     });
   }
 

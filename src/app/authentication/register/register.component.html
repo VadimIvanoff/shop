@@ -1,4 +1,4 @@
-<h4>Регистрация</h4>
+<h4 class="mt-2">Регистрация</h4>
 <form [formGroup]="form" (ngSubmit)="register()" class="flex-container mt-5">
   <mat-form-field>
     <input matInput placeholder="Адрес почты" formControlName="email" type="email">
@@ -15,8 +15,5 @@
   <div *ngIf="registerErrors" class="text-center">
     <mat-error *ngFor="let err of registerErrors">{{err}}</mat-error>
   </div>
-  <div class="d-flex">
-    <button class="mr-auto"  color="primary" mat-raised-button [disabled]="form.invalid">Регистрация</button>
-  </div>
 </form>
-
+<button (click)="register()" class="my-3"  color="primary" mat-raised-button [disabled]="form.invalid">Регистрация</button>

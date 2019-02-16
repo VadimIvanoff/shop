@@ -1,3 +1,23 @@
-<p>
-  delivery-form works!
-</p>
+<h4>Вы заказали доставку, пожалуйста укажите адрес</h4>
+<form [formGroup]="form" (ngSubmit)="validateAddress()" class="flex-container mt-5">
+  <mat-form-field class="w-75">
+    <input matInput placeholder="Город" formControlName="town" type="email">
+    <mat-error>Укажите населенный пункт</mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-75">
+    <input matInput placeholder="Улица" formControlName="street" type="password">
+    <mat-error>Укажите улицу</mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-75">
+    <input matInput placeholder="Дом" formControlName="buildingNumber" type="password">
+    <mat-error>Укажите номер строения</mat-error>
+  </mat-form-field>
+  <div *ngIf="registerErrors" class="text-center">
+    <mat-error *ngFor="let err of registerErrors">{{err}}</mat-error>
+  </div>
+  <div class="d-flex">
+    <button type="submit" class="mr-auto"  color="primary" mat-raised-button [disabled]="form.invalid">Продолжить</button>
+  </div>
+</form>
+
+

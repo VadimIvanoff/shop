@@ -5,6 +5,7 @@ import {PageNotFoundComponent} from './main-templates/page-not-found/page-not-fo
 import {CatalogComponent} from './catalog/catalog.component';
 import {CartComponent} from './main-templates/cart/cart.component';
 import {CheckoutComponent} from './main-templates/checkout/checkout.component';
+import {PrivateRoomComponent} from './main-template/private-room/private-room.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       {path: '', component: CatalogComponent},
       {path: 'catalog', component: CatalogComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'checkout', component: CheckoutComponent}
+      {path: 'checkout', component: CheckoutComponent},
+      {path: 'private-room', component: PrivateRoomComponent}
     ]
   },
   {path: '**', component: PageNotFoundComponent}

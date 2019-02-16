@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../models/product';
 import {CartService} from '../../services/cart.service';
+import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {ProductDetailsComponent, ProductInfo} from '../../products/product-details/product-details.component';
+
 
 @Component({
   selector: 'app-cart',
@@ -9,10 +13,12 @@ import {CartService} from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  products: Product[];
-  total = 0;
-  delivery = false;
-  constructor(private cart: CartService) { }
+  private products: Product[];
+  private total = 0;
+  private delivery = false;
+  constructor(private cart: CartService,
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.products = this.cart.getCart();
@@ -21,5 +27,18 @@ export class CartComponent implements OnInit {
     });
     console.log(this.total);
   }
+  openPrpductDetails(prod: Product, sr: string): void {
+    const prodInfo: ProductInfo = {product: prod, source: sr}
+    const dialogRef = this.dialog.open(ProductDetailsComponent, {
+      data: prodInfo
+    });
+  }
+  checkout() {
+     this.cart.setCartState({delivery: this.delivery, total: this.total});
+     this.router.navigateByUrl('checkout');
+  }
 
+  showProduct(fromCart: string) {
+
+  }
 }

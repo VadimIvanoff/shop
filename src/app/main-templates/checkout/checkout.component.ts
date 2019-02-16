@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,16 +11,14 @@ import {Observable} from 'rxjs';
 })
 export class CheckoutComponent implements OnInit {
 
-  delivery: Observable<string>;
   register = true;
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-   this.delivery = this.activatedRoute.paramMap.pipe(
-      map(params => {
-        return params.get('delivery');
-      })
-    );
+    console.log(this.auth.loggedIn);
+    if (this.auth.loggedIn) {
+      this.router.navigateByUrl('private-room');
+    }
   }
 
 }
