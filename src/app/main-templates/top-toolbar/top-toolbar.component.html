@@ -14,7 +14,8 @@
           </div>
         </div>
         <div class="col-4 text-right">
-          <button routerLink="/cart" class="btn btn-outline-light"> <mat-icon >add_shopping_cart</mat-icon>
+             <button class="mr-1" mat-button (click)="openPrivateRoom()">Личный кабинет</button>
+          <button routerLink="/cart" mat-button> <mat-icon >add_shopping_cart</mat-icon>
             <span class="badge badge-info">{{productCount|async}}</span></button>
         </div>
       </div>

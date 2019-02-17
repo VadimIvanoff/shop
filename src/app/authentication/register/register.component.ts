@@ -27,8 +27,8 @@ export class RegisterComponent implements OnInit {
     if (this.form.valid) {
       this.auth.registerNewUser(this.form.value).subscribe(result => {
         if (result) {
-          console.log(result);
-          // this.router.navigateByUrl('/private-room');
+          // console.log(result);
+          this.router.navigateByUrl('/private-room');
         }
       });
     }

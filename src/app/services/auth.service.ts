@@ -33,7 +33,7 @@ export class AuthService {
     return this.http.post(this.api_url + 'login', login, {withCredentials: true}).pipe(
       map(result => {
        this.isLoggedIn = true;
-       console.log(this.isLoggedIn);
+       // console.log(this.isLoggedIn);
         return true;
       })
     );

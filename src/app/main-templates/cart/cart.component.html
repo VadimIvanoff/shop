@@ -30,7 +30,7 @@
               Доставка
         </mat-radio-button>
         </mat-radio-group>
-        <button  (click)="checkout()" class="ml-auto" mat-raised-button  color="accent">Оформить заказ</button>
+        <button [disabled]="products.length === 0"  (click)="checkout()" class="ml-auto" mat-raised-button  color="accent">Оформить заказ</button>
       </div>
 
 

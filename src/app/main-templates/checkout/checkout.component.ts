@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.auth.loggedIn);
+    // console.log(this.auth.loggedIn);
     if (this.auth.loggedIn) {
       this.router.navigateByUrl('private-room');
     }

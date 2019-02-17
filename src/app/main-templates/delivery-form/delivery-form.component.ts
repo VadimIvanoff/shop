@@ -16,9 +16,9 @@ export class DeliveryFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      'town': ['', Validators.required],
-      'street': ['', Validators.required],
-      'buildingNumber': ['', Validators.required]
+      'town': ['Moscow', Validators.required],
+      'street': ['Petrova', Validators.required],
+      'buildingNumber': ['38a', Validators.required]
     });
   }
   validateAddress() {

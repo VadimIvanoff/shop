@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
     this.dialogRef.close();
   }
   getImage(): Observable<any> {
-    console.log(this.data.source);
+    // console.log(this.data.source);
     return this.getInfo.getBigImage(this.data.product.id).pipe(
       tap(blob => this.createImageFromBlob(blob))
     );

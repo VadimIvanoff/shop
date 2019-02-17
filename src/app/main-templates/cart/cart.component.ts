@@ -25,7 +25,6 @@ export class CartComponent implements OnInit {
     this.products.forEach(p => {
       this.total = this.total + p.price;
     });
-    console.log(this.total);
   }
   openPrpductDetails(prod: Product, sr: string): void {
     const prodInfo: ProductInfo = {product: prod, source: sr}
@@ -35,10 +34,8 @@ export class CartComponent implements OnInit {
   }
   checkout() {
      this.cart.setCartState({delivery: this.delivery, total: this.total});
+     console.log(`set delivery in checkout`);
      this.router.navigateByUrl('checkout');
   }
 
-  showProduct(fromCart: string) {
-
-  }
 }

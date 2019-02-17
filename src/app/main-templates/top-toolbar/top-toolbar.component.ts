@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GetProductInfoService} from '../../services/get-product-info.service';
 import {SearchCriteria} from '../../models/searchCriteria';
 import {CartService} from '../../services/cart.service';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-top-toolbar',
@@ -13,18 +15,26 @@ export class TopToolbarComponent implements OnInit {
 
   searchString: string;
   productCount: Observable<number>;
-  constructor(private getInfo: GetProductInfoService, private cart: CartService) { }
+
+  constructor(private getInfo: GetProductInfoService,
+              private cart: CartService,
+              private router: Router,
+              private auth: AuthService) {
+  }
 
   ngOnInit() {
     this.productCount = this.cart.getCount();
   }
+
   search() {
     const request: SearchCriteria = {type: 'search', search: this.searchString};
     this.getInfo.makeSearchRequest(request);
     this.searchString = '';
   }
 
-  openCart() {
-
+  openPrivateRoom() {
+    if (this.auth.loggedIn) {
+      this.router.navigateByUrl('/private-room');
+    } else { this.router.navigateByUrl('checkout'); }
   }
 }

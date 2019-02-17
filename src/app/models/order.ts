@@ -1,11 +1,11 @@
 import {Product} from './product';
 import {DeliveryAddress} from './delivery-address';
 
-export interface CartState {
-  products?: Product[];
+export interface Order {
+  id?: number;
+  customer?: string;
   productsIds?: number[];
-  total?: number;
-  delivery?: boolean;
   status?: string;
+  products?: Product[];
   deliveryAddress?: string;
 }

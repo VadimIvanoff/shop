@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     if (this.form.valid) {
       this.auth.login(this.form.value).subscribe(result => {
-        console.log(result);
+        // console.log(result);
         this.router.navigateByUrl('private-room');
       });
     }

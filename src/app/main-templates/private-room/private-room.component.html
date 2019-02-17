@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 justify-content-center">
+      <app-delivery-form (addressIsValid)="hideForm($event)" *ngIf="showDeliveryForm"></app-delivery-form>
+      <div *ngIf="!showDeliveryForm">
+        <h5>Список заказов в обработке</h5>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Номер заказа</th>
+            <th>Адрес доставки</th>
+            <th>Статус</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of orders|async">
+            <td>{{order.id}}</td>
+            <td>{{order.deliveryAddress}}</td>
+            <td>{{order.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div *ngIf="cartState.products.length !== 0">
+          <table  class="table table-hover table-active">
+            <thead>
+            <tr>
+              <th>Товар</th>
+              <th>Стоимость</th>
+              <th>Статус заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let prod of cartState.products">
+              <td>{{prod.name}}</td>
+              <td>{{prod.price}}</td>
+            </tr>
+            <tr>
+              <td class="d-flex">
+                <span class="ml-auto"> итого:</span>
+              </td>
+              <td>
+                <span>{{cartState.total}}</span>
+              </td>
+              <td>
+                {{cartState.status}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="d-flex">
+            <h5 class="ml-auto">Итого - {{cartState.total}} р.</h5>
+          </div>
+          <div class="d-flex">
+            <button [disabled]="cartState.products.length === 0" (click)="saveAndSend()" class="ml-auto"
+                    mat-raised-button color="accent">Оплатить и отправить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

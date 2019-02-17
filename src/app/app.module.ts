@@ -28,7 +28,7 @@ import { NotificationComponent } from './main-templates/notification/notificatio
 import { CartComponent } from './main-templates/cart/cart.component';
 import { CheckoutComponent } from './main-templates/checkout/checkout.component';
 import { DeliveryFormComponent } from './main-templates/delivery-form/delivery-form.component';
-import { PrivateRoomComponent } from './main-template/private-room/private-room.component';
+import { PrivateRoomComponent } from './main-templates/private-room/private-room.component';
 
 @NgModule({
   declarations: [
