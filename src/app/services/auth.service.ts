@@ -23,8 +23,10 @@ export class AuthService {
   registerNewUser(user: NewUser): Observable<boolean> {
     return this.http.post(this.api_url + 'register', user, {withCredentials: true}).pipe(
       map(result => {
-        this.isLoggedIn = true;
-        return true;
+        if (result === true ) {
+          this.isLoggedIn = true;
+          return true;
+        }
       })
     );
   }
@@ -32,9 +34,11 @@ export class AuthService {
   login(login: Login): Observable<boolean> {
     return this.http.post(this.api_url + 'login', login, {withCredentials: true}).pipe(
       map(result => {
-       this.isLoggedIn = true;
-       // console.log(this.isLoggedIn);
-        return true;
+        if (result === true ) {
+          this.isLoggedIn = true;
+          // console.log(this.isLoggedIn);
+          return true;
+        }
       })
     );
   }
