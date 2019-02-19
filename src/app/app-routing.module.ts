@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainFrameComponent} from './main-templates/main-frame/main-frame.component';
 import {PageNotFoundComponent} from './main-templates/page-not-found/page-not-found.component';
-import {CatalogComponent} from './catalog/catalog.component';
+import {CatalogComponent} from './catalog/catalog-component/catalog.component';
 import {CartComponent} from './main-templates/cart/cart.component';
 import {CheckoutComponent} from './main-templates/checkout/checkout.component';
 import {PrivateRoomComponent} from './main-templates/private-room/private-room.component';

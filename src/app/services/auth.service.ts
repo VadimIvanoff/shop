@@ -1,9 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NewUser} from '../models/user';
+import {NewUser} from '../models/new-user';
 import {Login} from '../models/login';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {InfoService} from './info.service';
+import {User} from '../models/user';
+import {select, Store} from '@ngrx/store';
+import {isLoggedIn, isLoggedOut} from '../authentication/auth.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +15,45 @@ import {map} from 'rxjs/operators';
 export class AuthService {
 
   private api_url = 'http://localhost:5000/api/auth/';
-  private loginStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private currentUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean>;
+  isLoggedOut$: Observable<boolean>;
   private isLoggedIn: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private info: InfoService, private store: Store) {
+    this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
+    this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
   }
+
   get loggedIn(): boolean {
     return this.isLoggedIn;
   }
-  registerNewUser(user: NewUser): Observable<boolean> {
-    return this.http.post(this.api_url + 'register', user, {withCredentials: true}).pipe(
+
+  login(login: Login): Observable<User> {
+    return this.http.post<User>(this.api_url + 'login', login, {withCredentials: true}).pipe(
       map(result => {
-        if (result === true ) {
-          this.isLoggedIn = true;
-          return true;
+        if (result.name) {
+          // this.isLoggedIn = true;
+          return result;
         }
+      }),
+      catchError(err => {
+        console.log(JSON.stringify(err));
+        this.info.reportMessage2(err.error);
+        return of({name: ''});
       })
     );
   }
 
-  login(login: Login): Observable<boolean> {
-    return this.http.post(this.api_url + 'login', login, {withCredentials: true}).pipe(
+  logout(): Observable<any> {
+    return this.http.get(this.api_url + 'logout', {withCredentials: true});
+  }
+
+  registerNewUser(user: NewUser): Observable<User> {
+    return this.http.post<User>(this.api_url + 'register', user, {withCredentials: true}).pipe(
       map(result => {
-        if (result === true ) {
-          this.isLoggedIn = true;
-          // console.log(this.isLoggedIn);
-          return true;
+        if (result.name) {
+          // this.isLoggedIn = true;
+          return result;
         }
       })
     );

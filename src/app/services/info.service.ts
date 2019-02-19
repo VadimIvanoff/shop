@@ -6,7 +6,7 @@ import {NotificationComponent} from '../main-templates/notification/notification
 @Injectable({
   providedIn: 'root'
 })
-export class InfoServiceService {
+export class InfoService {
 
   private message: BehaviorSubject<string> = new BehaviorSubject<string>('');
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {InfoServiceService} from './info-service.service';
+import {InfoService} from './info.service';
 import {MatBottomSheet} from '@angular/material';
 import {NotificationComponent} from '../main-templates/notification/notification.component';
 import {CartState} from '../models/cart-state';
@@ -20,7 +20,7 @@ export class CartService {
   private products: Product[] = [];
   private cartState: CartState;
 
-  constructor(private info: InfoServiceService,
+  constructor(private info: InfoService,
               private bottomSheet: MatBottomSheet, private http: HttpClient) {
     const getStorage = JSON.parse(localStorage.getItem('products'));
     this.products = getStorage ? getStorage : [];

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ComparePasswords} from '../comparePasswords';
-import {NewUser} from '../../models/user';
+import {NewUser} from '../../models/new-user';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
-import {InfoServiceService} from '../../services/info-service.service';
+import {InfoService} from '../../services/info.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   registerErrors: string[] = [];
   constructor(private fb: FormBuilder, private auth: AuthService,
-              private router: Router, private info: InfoServiceService) { }
+              private router: Router, private info: InfoService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -27,9 +27,8 @@ export class RegisterComponent implements OnInit {
   }
   register(): void {
     if (this.form.valid) {
-      this.auth.registerNewUser(this.form.value).subscribe(result => {
-        if (result === true) {
-          // console.log(result);
+      this.auth.registerNewUser(this.form.value).subscribe(user => {
+        if (user.name) {
           this.router.navigateByUrl('/private-room');
         }
       },

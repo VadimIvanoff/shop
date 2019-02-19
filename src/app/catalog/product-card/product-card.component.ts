@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
-import {GetProductInfoService} from '../../services/get-product-info.service';
+import {ProductInfoService} from '../../services/product-info.service';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
@@ -16,7 +16,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   private img$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
 
-  constructor(private getInfo: GetProductInfoService, public dialog: MatDialog) { }
+  constructor(private getInfo: ProductInfoService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getImage().subscribe(() => {

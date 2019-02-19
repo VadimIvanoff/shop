@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Product} from '../../models/product';
-import {GetProductInfoService} from '../../services/get-product-info.service';
+import {ProductInfoService} from '../../services/product-info.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {CartService} from '../../services/cart.service';
@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   private img$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
   constructor(public dialogRef: MatDialogRef<ProductDetailsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ProductInfo,
-              private getInfo: GetProductInfoService,
+              private getInfo: ProductInfoService,
               private cart: CartService) { }
 
   ngOnInit() {

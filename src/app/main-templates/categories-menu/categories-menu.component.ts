@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GetProductInfoService} from '../../services/get-product-info.service';
+import {ProductInfoService} from '../../services/product-info.service';
 import {Observable} from 'rxjs';
 import {Category} from '../../models/category';
 import {map, take} from 'rxjs/operators';
@@ -13,7 +13,7 @@ export class CategoriesMenuComponent implements OnInit {
 
   categories$: Observable<Category[]>;
   allCategories$: Observable<Category[]>;
-  constructor(private getInfo: GetProductInfoService) { }
+  constructor(private getInfo: ProductInfoService) { }
 
   ngOnInit() {
     this.categories$ = this.getInfo.getCategories().pipe(

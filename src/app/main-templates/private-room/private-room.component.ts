@@ -3,8 +3,12 @@ import {CartState} from '../../models/cart-state';
 import {CartService} from '../../services/cart.service';
 import {DeliveryAddress} from '../../models/delivery-address';
 import {Order} from '../../models/order';
-import {Observable} from 'rxjs';
+import {noop, Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {LogoutAction} from '../../authentication/auth-actions.actions';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 
 @Component({
@@ -19,14 +23,12 @@ export class PrivateRoomComponent implements OnInit {
   cartState: CartState;
   address: string;
 
-  constructor(private cart: CartService) {
+  constructor(private cart: CartService, private store: Store, private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
     this.cartState = this.cart.getCartState();
-    // console.log(this.cartState);
     this.showDeliveryForm = this.cartState.delivery;
-    // console.log(this.cart.getCartState());
     this.orders = this.cart.getOrders();
     this.cart.getOrdersFormApi().subscribe();
   }
@@ -45,5 +47,15 @@ export class PrivateRoomComponent implements OnInit {
         this.cartState.products = [];
       });
     }
+  }
+
+  logout() {
+    this.auth.logout().pipe(
+      tap(() => {
+        this.store.dispatch(new LogoutAction());
+        this.router.navigateByUrl('/');
+      })).subscribe(
+      noop,
+      error1 => console.log('Не удалось связаться с сервером'));
   }
 }

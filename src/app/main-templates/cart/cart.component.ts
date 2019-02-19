@@ -3,7 +3,7 @@ import {Product} from '../../models/product';
 import {CartService} from '../../services/cart.service';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
-import {ProductDetailsComponent, ProductInfo} from '../../products/product-details/product-details.component';
+import {ProductDetailsComponent, ProductInfo} from '../../catalog/product-details/product-details.component';
 
 
 @Component({

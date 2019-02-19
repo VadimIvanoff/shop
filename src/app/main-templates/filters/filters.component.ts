@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchCriteria} from '../../models/searchCriteria';
-import {GetProductInfoService} from '../../services/get-product-info.service';
+import {ProductInfoService} from '../../services/product-info.service';
 
 @Component({
   selector: 'app-filters',
@@ -14,7 +14,7 @@ export class FiltersComponent implements OnInit {
   toPrice: string;
   selectedRating: number;
 
-  constructor(private getInfo: GetProductInfoService) {
+  constructor(private getInfo: ProductInfoService) {
   }
 
   ngOnInit() {

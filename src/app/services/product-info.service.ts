@@ -13,7 +13,7 @@ const api_url = 'http://localhost:5000/api/';
 @Injectable({
   providedIn: 'root'
 })
-export class GetProductInfoService {
+export class ProductInfoService {
 
   categories: BehaviorSubject<Category[]> = new BehaviorSubject<Category[]>([]);
   products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);

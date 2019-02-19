@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
-import {InfoServiceService} from '../../services/info-service.service';
+import {InfoService} from '../../services/info.service';
+import {tap} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {LoginAction} from '../auth-actions.actions';
+import {noop} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +18,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private auth: AuthService,
-              private router: Router, private info: InfoServiceService) { }
+              private router: Router, private store: Store) {
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -22,15 +27,19 @@ export class LoginComponent implements OnInit {
       password: ['Qwerty1!', Validators.required],
     });
   }
+
   login(): void {
     if (this.form.valid) {
-      this.auth.login(this.form.value).subscribe(result => {
-        if (result === true) {
-          console.log(result);
-          this.router.navigateByUrl('private-room');
-        }
-      },
-        error1 => this.info.reportMessage2(`${JSON.stringify(error1.error)}`));
+      this.auth.login(this.form.value).pipe(
+        tap(user => {
+          if (user.name) {
+            this.store.dispatch(new LoginAction(user));
+            this.router.navigateByUrl('private-room');
+          }}))
+        .subscribe(
+          noop,
+          () => console.log(`совсем все плохо`)
+          );
     }
   }
 }

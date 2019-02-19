@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatBottomSheet} from '@angular/material';
 import {NotificationComponent} from '../notification/notification.component';
-import {InfoServiceService} from '../../services/info-service.service';
+import {InfoService} from '../../services/info.service';
 
 @Component({
   selector: 'app-main-frame',
@@ -10,7 +10,7 @@ import {InfoServiceService} from '../../services/info-service.service';
 })
 export class MainFrameComponent implements OnInit {
 
-  constructor(private bottomSheet: MatBottomSheet, private info: InfoServiceService) { }
+  constructor(private bottomSheet: MatBottomSheet, private info: InfoService) { }
 
   ngOnInit() {
 

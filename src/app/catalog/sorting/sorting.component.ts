@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GetProductInfoService} from '../../services/get-product-info.service';
+import {ProductInfoService} from '../../services/product-info.service';
 
 @Component({
   selector: 'app-sorting',
@@ -8,7 +8,7 @@ import {GetProductInfoService} from '../../services/get-product-info.service';
 })
 export class SortingComponent implements OnInit {
 
-  constructor(private getInfo: GetProductInfoService) { }
+  constructor(private getInfo: ProductInfoService) { }
 
   ngOnInit() {
   }

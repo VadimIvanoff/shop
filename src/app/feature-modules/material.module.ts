@@ -10,13 +10,16 @@ import {
   MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
   MatToolbarModule
 } from '@angular/material';
-import {ProductDetailsComponent} from '../products/product-details/product-details.component';
+import {ProductDetailsComponent} from '../catalog/product-details/product-details.component';
 import {NotificationComponent} from '../main-templates/notification/notification.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
@@ -33,6 +36,8 @@ import {NotificationComponent} from '../main-templates/notification/notification
     MatRadioModule
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatInputModule,

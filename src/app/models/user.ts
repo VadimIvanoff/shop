@@ -1,5 +1,3 @@
-export interface NewUser {
-  email: string;
-  password: string;
-  confirm: string;
+export interface User {
+  name: string;
 }
