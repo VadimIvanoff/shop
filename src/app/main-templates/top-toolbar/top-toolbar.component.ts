@@ -5,6 +5,7 @@ import {CartService} from '../../services/cart.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-top-toolbar',
@@ -33,8 +34,14 @@ export class TopToolbarComponent implements OnInit {
   }
 
   openPrivateRoom() {
-    if (this.auth.loggedIn) {
-      this.router.navigateByUrl('/private-room');
-    } else { this.router.navigateByUrl('checkout'); }
+    this.auth.isLoggedIn$.pipe(
+      tap(result => {
+        if (result === true) {
+          this.router.navigateByUrl('/private-room');
+        } else {
+          this.router.navigateByUrl('checkout');
+        }
+      })
+    ).subscribe();
   }
 }

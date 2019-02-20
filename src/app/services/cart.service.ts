@@ -82,7 +82,7 @@ export class CartService {
   }
 
   saveToLocalStore(products: Product[]) {
-    localStorage.clear();
+    localStorage.removeItem('products');
     localStorage.setItem('products', JSON.stringify(this.products));
   }
 

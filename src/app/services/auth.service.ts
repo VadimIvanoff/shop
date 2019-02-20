@@ -8,6 +8,7 @@ import {InfoService} from './info.service';
 import {User} from '../models/user';
 import {select, Store} from '@ngrx/store';
 import {isLoggedIn, isLoggedOut} from '../authentication/auth.selectors';
+import {AppState} from '../reducers';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthService {
   isLoggedOut$: Observable<boolean>;
   private isLoggedIn: boolean;
 
-  constructor(private http: HttpClient, private info: InfoService, private store: Store) {
+  constructor(private http: HttpClient, private info: InfoService, private store: Store<AppState>) {
     this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
     this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
   }
@@ -30,14 +31,7 @@ export class AuthService {
 
   login(login: Login): Observable<User> {
     return this.http.post<User>(this.api_url + 'login', login, {withCredentials: true}).pipe(
-      map(result => {
-        if (result.name) {
-          // this.isLoggedIn = true;
-          return result;
-        }
-      }),
       catchError(err => {
-        console.log(JSON.stringify(err));
         this.info.reportMessage2(err.error);
         return of({name: ''});
       })
@@ -45,16 +39,19 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.get(this.api_url + 'logout', {withCredentials: true});
+    return this.http.get(this.api_url + 'logout', {withCredentials: true}).pipe(
+      catchError(err => {
+        this.info.reportMessage2(err.error);
+        return of(false);
+      })
+    );
   }
 
   registerNewUser(user: NewUser): Observable<User> {
     return this.http.post<User>(this.api_url + 'register', user, {withCredentials: true}).pipe(
-      map(result => {
-        if (result.name) {
-          // this.isLoggedIn = true;
-          return result;
-        }
+      catchError(err => {
+        this.info.reportMessage2(err.error);
+        return of({name: ''});
       })
     );
   }

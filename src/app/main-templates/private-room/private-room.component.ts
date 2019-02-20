@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import {LogoutAction} from '../../authentication/auth-actions.actions';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {AppState} from '../../reducers';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class PrivateRoomComponent implements OnInit {
   cartState: CartState;
   address: string;
 
-  constructor(private cart: CartService, private store: Store, private router: Router, private auth: AuthService) {
+  constructor(private cart: CartService, private store: Store<AppState>,
+              private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
@@ -53,9 +55,6 @@ export class PrivateRoomComponent implements OnInit {
     this.auth.logout().pipe(
       tap(() => {
         this.store.dispatch(new LogoutAction());
-        this.router.navigateByUrl('/');
-      })).subscribe(
-      noop,
-      error1 => console.log('Не удалось связаться с сервером'));
+      })).subscribe();
   }
 }
