@@ -23,7 +23,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AuthModule} from './authentication/auth.module';
 import {CatalogModule} from './catalog/catalog.module';
 import {FiltersComponent} from './main-templates/filters/filters.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
