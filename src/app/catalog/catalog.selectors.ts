@@ -1,9 +1,9 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {ImagesState} from './catalog.reducer';
+import {SmallImagesState} from './catalog.reducer';
 
-export const selectImagesState = createFeatureSelector<ImagesState>('catalog');
+export const selectImagesState = createFeatureSelector<SmallImagesState>('smallImages');
 
-export const selectImageByProductId = (prodId: number) => createSelector(
+export const selectSmallImgByProductId = (prodId: number) => createSelector(
   selectImagesState,
   imagesState => imagesState.entities[prodId]
 );

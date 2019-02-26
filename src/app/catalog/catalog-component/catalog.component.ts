@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Product} from '../../models/product';
 import {ProductInfoService} from '../../services/product-info.service';
+import {first, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-catalog',

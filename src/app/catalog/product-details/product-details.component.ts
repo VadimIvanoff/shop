@@ -5,6 +5,8 @@ import {ProductInfoService} from '../../services/product-info.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {CartService} from '../../services/cart.service';
+import {AppState} from '../../reducers';
+import {select, Store} from '@ngrx/store';
 
 
 export interface ProductInfo {
@@ -23,11 +25,14 @@ export class ProductDetailsComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ProductDetailsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ProductInfo,
               private getInfo: ProductInfoService,
-              private cart: CartService) { }
+              private cart: CartService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.getImage().subscribe(() => {
     });
+    this.store.pipe(
+      // select()
+    );
   }
   close(): void {
     this.dialogRef.close();

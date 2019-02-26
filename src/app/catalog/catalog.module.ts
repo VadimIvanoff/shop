@@ -8,7 +8,7 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import { StoreModule } from '@ngrx/store';
 import * as fromCatalog from './catalog.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { CatalogEffects } from './catalog.effects';
+import { SmallImagesEffects } from './catalog.effects';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { CatalogEffects } from './catalog.effects';
   imports: [
     CommonModule,
     MaterialModule,
-    EffectsModule.forFeature([CatalogEffects])
-    // StoreModule.forFeature('catalog', fromCatalog.reducer)
+    EffectsModule.forFeature([SmallImagesEffects]),
+    StoreModule.forFeature('smallImages', fromCatalog.smallImagesReducer)
   ]
 })
 export class CatalogModule { }

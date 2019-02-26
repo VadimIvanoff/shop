@@ -7,6 +7,8 @@ import {products} from '../fakedata/products';
 import {map, take, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {SearchCriteria} from '../models/searchCriteria';
+import {RawImage} from '../models/product-image';
+import {selectSmallImgByProductId} from '../catalog/catalog.selectors';
 
 const api_url = 'http://localhost:5000/api/';
 
@@ -53,8 +55,12 @@ export class ProductInfoService {
         })
       ).subscribe();
   }
-  getSmallImage(prodId: number): Observable<Blob> {
-    return this.http.get(api_url + 'products/imagesmall/' + prodId, {responseType: 'blob'});
+  getSmallImage(prodId: number): Observable<RawImage> {
+    return this.http.get(api_url + 'products/imagesmall/' + prodId, {responseType: 'blob'}).pipe(
+      map(blob => {
+        const rawImage: RawImage = {content: blob, productId: prodId};
+        return rawImage;
+      }));
   }
 
   getBigImage(prodId: number): Observable<Blob> {
